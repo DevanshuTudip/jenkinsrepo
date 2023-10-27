@@ -11,9 +11,6 @@ pipeline {
             }
         }
         stage('fetch tag and env from the PR') {
-            when {
-                branch "PR-*"
-            }
             steps {
                 // Add your build steps here
                 sh 'ls && date && cat index.html && sleep 5'
@@ -36,9 +33,6 @@ pipeline {
             }
         }
         stage('Using the Env variable in another step') {
-            when {
-                branch "PR-*"
-            }
             steps {
                echo "npx nx run cucumber-tests:test:qa --tag=${env.tag} --env=${env.env}"
             }
